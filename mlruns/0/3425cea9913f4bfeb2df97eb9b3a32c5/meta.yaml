@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/skotha/Projects/Learning/udacity/mlops/cd0581-building-a-reproducible-model-workflow-exercises/build-ml-pipeline-for-short-term-rental-prices/mlruns/0/3425cea9913f4bfeb2df97eb9b3a32c5/artifacts
+end_time: 1675632598431
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 3425cea9913f4bfeb2df97eb9b3a32c5
+run_uuid: 3425cea9913f4bfeb2df97eb9b3a32c5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1675632576161
+status: 3
+tags: []
+user_id: skotha
