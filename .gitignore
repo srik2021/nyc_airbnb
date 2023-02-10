@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#MLflow runs
+mlruns/
+
+#WandB inf
+src/eda/wandb/
+src/eda/artifacts/

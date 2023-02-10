@@ -1,11 +1,16 @@
 import json
 
+import logging
 import mlflow
 import tempfile
 import os
 import wandb
 import hydra
 from omegaconf import DictConfig
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
+logger = logging.getLogger()
+
 
 _steps = [
     "download",
@@ -30,12 +35,14 @@ def go(config: DictConfig):
 
     # Steps to execute
     steps_par = config['main']['steps']
+    logger.info(f"Executing the following steps: {steps_par} ")
     active_steps = steps_par.split(",") if steps_par != "all" else _steps
 
     # Move to a temporary directory
     with tempfile.TemporaryDirectory() as tmp_dir:
 
         if "download" in active_steps:
+            logger.info("Executing: download")
             # Download file and load in W&B
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/get_data",
@@ -50,6 +57,7 @@ def go(config: DictConfig):
             )
 
         if "basic_cleaning" in active_steps:
+            logger.info("Executing: basic_cleaning")
             _ = mlflow.run(
                 os.path.join(hydra.utils.get_original_cwd(), "src", "basic_cleaning"),
                 "main",
@@ -64,6 +72,7 @@ def go(config: DictConfig):
             )
 
         if "data_check" in active_steps:
+            logger.info("Executing: data_check")
             _ = mlflow.run(
                 os.path.join(hydra.utils.get_original_cwd(), "src", "data_check"),
                 "main",
@@ -77,6 +86,7 @@ def go(config: DictConfig):
             )
 
         if "data_split" in active_steps:
+            logger.info("Executing: data_split")
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/train_val_test_split",
                 "main",
@@ -90,6 +100,7 @@ def go(config: DictConfig):
             )
 
         if "train_random_forest" in active_steps:
+            logger.info("Executing: train_random_forest")
 
             # NOTE: we need to serialize the random forest configuration into JSON
             rf_config = os.path.abspath("rf_config.json")
@@ -114,6 +125,7 @@ def go(config: DictConfig):
             )
 
         if "test_regression_model" in active_steps:
+            logger.info("Executing: test_regression_model")
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/test_regression_model",
                 "main",

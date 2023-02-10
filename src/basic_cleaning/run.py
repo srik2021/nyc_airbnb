@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """
-Download from W&B the raw dataset and apply some basic data cleaning, exporting the result to a new artifact
+Download from W&B the raw dataset and apply some basic data cleaning, 
+exporting the result to a new artifact
 """
 import argparse
 import logging
@@ -37,11 +38,14 @@ def go(args):
     )
     artifact.add_file(args.output_artifact)
     run.log_artifact(artifact)
-    logger.info(f"Successfully loadeds cleaned artifact: {args.output_artifact} to wandb")
+    logger.info(f"Successfully loaded cleaned artifact: {args.output_artifact} to wandb")
     run.finish()
 
 if __name__ == "__main__":
-
+    """
+    Reads and parses the input arguments and invokes the go method to perform
+    basic cleaning
+    """
     parser = argparse.ArgumentParser(description="A very basic cleaning")
 
     parser.add_argument(

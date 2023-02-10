@@ -9,7 +9,7 @@ In this project you will build such a pipeline.
 ## Table of contents
 
 - [Introduction](#build-an-ML-Pipeline-for-Short-Term-Rental-Prices-in-NYC)
-- [Code and Artifact Info]
+- [Code and Artifact Info](#code-and-artifact-info)
 - [Preliminary steps](#preliminary-steps)
   * [Fork the Starter Kit](#fork-the-starter-kit)
   * [Create environment](#create-environment)
@@ -35,6 +35,7 @@ In this project you will build such a pipeline.
 ## Code and Artifact Info
 You can download the code from https://github.com/srik2021/nyc_airbnb
 All the experiments, runs and artifacts are logged using Weights and Biases.  They are located at https://wandb.ai/learnmlops/nyc_airbnb?workspace=user-kotwandb
+
 
 
 ## Preliminary steps
